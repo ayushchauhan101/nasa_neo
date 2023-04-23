@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 
+import Links from "./Links"
+
 function Server() {
 	const [data, setData] = useState("")
 
@@ -28,6 +30,7 @@ function Server() {
 					Number of near earth objects examined between {startDate} and{" "}
 					{endDate} = {totalElem}
 				</p>
+				<Links />
 			</div>
 		</div>
 	)
