@@ -1,14 +1,11 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 
-import Links from "./Links"
-import Neo from "./Neo"
-
-function Server() {
-	const [data, setData] = useState("")
+function Neo() {
+	const [neo, setNeo] = useState()
 
 	const apiKEY = "8AQvwvmUoLmpTAM4hDN6xAvTFDcsb7fuoiycE4JH"
-	const startDate = "2022-09-07"
+	const startDate = "2022-09-09"
 	const endDate = "2022-09-09"
 
 	const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${apiKEY}`
@@ -17,25 +14,19 @@ function Server() {
 		getData()
 		async function getData() {
 			const response = await axios.get(url)
-			setData(response.data)
+			const parsedData = await response.data.near_earth_objects
+			setNeo(parsedData)
 		}
 	}, [url])
 
-	const totalElem = data["element_count"]
+	// console.log(neo)
 
 	return (
 		<div>
-			<h3>NASA DATABSE</h3>
-			<div>
-				<p>
-					Number of near earth objects examined between {startDate} and{" "}
-					{endDate} = {totalElem}
-				</p>
-				<Links />
-				<Neo />
-			</div>
+			<h3>The Neo here:</h3>
+			<div></div>
 		</div>
 	)
 }
 
-export default Server
+export default Neo
