@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { Suspense } from "react"
 
 import Links from "./Links"
 import Neo from "./Neo"
@@ -23,13 +24,17 @@ function Server() {
 
 	const totalElem = data["element_count"]
 
+	function Loading() {
+		return <>🌀 Loading...</>
+	}
+
 	return (
 		<div>
 			<h3>NASA DATABSE</h3>
 			<div>
 				<p>
 					Number of near earth objects examined between {startDate} and{" "}
-					{endDate} = {totalElem}
+					{endDate} =<Suspense fallback={<Loading />}>{totalElem}</Suspense>
 				</p>
 				<Links />
 				<Neo />

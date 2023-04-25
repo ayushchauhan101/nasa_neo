@@ -1,15 +1,11 @@
 import Server from "./components/Server"
 
-import Mock from "./components/Mock"
-
 function App() {
-
-  return (
-    <>
-      <Server />
-      <Mock />
-    </>
-  )
+	return (
+		<>
+			<Server />
+		</>
+	)
 }
 
 export default App
